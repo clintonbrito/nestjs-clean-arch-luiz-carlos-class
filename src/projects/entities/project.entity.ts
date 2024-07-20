@@ -32,11 +32,11 @@ export class Project {
     props: {
       name: string;
       description: string;
-      started_at: Date | null;
-      cancelled_at: Date | null;
-      forecasted_at: Date | null;
+      started_at?: Date | null;
+      cancelled_at?: Date | null;
+      forecasted_at?: Date | null;
     },
-    id: string,
+    id?: string,
   ) {
     Object.assign(this, props);
     this.id = id ?? crypto.randomUUID();
