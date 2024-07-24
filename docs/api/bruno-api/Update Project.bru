@@ -1,0 +1,18 @@
+meta {
+  name: Update Project
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseURL}}/projects/c21f3e15-9a5a-46b7-837c-75e884ab7c61
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Project updated",
+    "description": "Description updated"
+  }
+}

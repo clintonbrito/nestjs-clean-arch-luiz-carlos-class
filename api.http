@@ -1,0 +1,35 @@
+GET http://localhost:3000/projects
+
+###
+GET http://localhost:3000/projects/{{project_id}}
+
+###
+# @name createProject
+POST http://localhost:3000/projects
+Content-Type: application/json
+
+{
+    "name": "Project 1",
+    "description": "Description 1"
+}
+
+###
+@project_id = {{ createProject.response.body.id }}
+
+###
+PATCH http://localhost:3000/projects/{{project_id}}
+Content-Type: application/json
+
+{
+    "name": "Project 1 updatedd",
+    "description": "Description 1 updatedd",
+    "started_at": "2024-07-01"
+}
+
+###
+POST http://localhost:3000/projects/{{project_id}}/start
+Content-Type: application/json
+
+{
+    "started_at": "2020-01-01"
+}
