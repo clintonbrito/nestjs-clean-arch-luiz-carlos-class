@@ -1,20 +1,24 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { CreateProjectUseCase } from './use-cases/create-project.use-case';
+import { FindAllProjectsUseCase } from './use-cases/find-all-projects.use-case';
 
 @Controller('/projects')
 export class ProjectsWithUseCaseController {
-  constructor(private readonly createProjectUseCase: CreateProjectUseCase) {}
+  constructor(
+    private readonly createProjectUseCase: CreateProjectUseCase,
+    private readonly findAllProjectsUseCase: FindAllProjectsUseCase,
+  ) {}
 
   @Post()
   create(@Body() createProjectDto: CreateProjectDto) {
     return this.createProjectUseCase.execute(createProjectDto);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.projectsService.findAll();
-  // }
+  @Get()
+  findAll() {
+    return this.findAllProjectsUseCase.execute();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
